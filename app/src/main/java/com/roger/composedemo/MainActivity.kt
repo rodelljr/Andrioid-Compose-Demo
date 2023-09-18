@@ -11,7 +11,6 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.AddCircle
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
@@ -36,8 +35,6 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-
-
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Preview(showBackground = true)
 @Composable
@@ -57,30 +54,30 @@ fun BottomNav(navController: NavHostController) {
         composable("MyList") {
             MyList()
         }
-
     }
-
 }
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun Bars() {
     val navController = rememberNavController()
+
     Scaffold(
         topBar = {
             TopAppBar(
                 title = {
                     Text(
                         text = "Compose Demo",
-                        color = Color.White
+                        color = MaterialTheme.colors.secondary
                     )
                 },
-                backgroundColor = MaterialTheme.colors.primary,
-                contentColor = Color.White,
-                elevation = 12.dp
+                backgroundColor = MaterialTheme.colors.background,
+                contentColor = MaterialTheme.colors.background,
+                elevation = 0.dp
             )
         },
         content = {
+
             BottomNav(navController = navController)
         },
 
@@ -103,11 +100,8 @@ fun Bars() {
                     navController.navigate(it.route)
                 })
         }
-
-
     )
 }
-
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
@@ -134,6 +128,5 @@ fun BottomNavLaunch() {
                 })
         }
     ) {
-
     }
 }

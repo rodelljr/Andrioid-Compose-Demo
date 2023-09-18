@@ -1,33 +1,29 @@
 package com.roger.composedemo.ui.theme
 
+import android.app.Activity
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.graphics.Color
+import androidx.compose.runtime.SideEffect
+import androidx.compose.ui.graphics.toArgb
+import androidx.compose.ui.platform.LocalView
+import androidx.core.view.WindowCompat
 
 private val DarkColorPalette = darkColors(
-    primary = DarkOrange500,
-    primaryVariant = DarkOrange700,
-    secondary = Indego500,
-    background = Color.DarkGray
+    primary = ContentColor,
+    primaryVariant = AccentColor,
+    secondary = PrimaryColor,
+    background = AccentColor
 )
 
 private val LightColorPalette = lightColors(
-    primary = DarkOrange500,
-    primaryVariant = DarkOrange700,
-    secondary = Indego500,
-    background = Color.White
+    primary = ContentColor,
+    primaryVariant = PrimaryColor,
+    secondary = AccentColor,
+    background = SecondaryColor
 
-    /* Other default colors to override
-    background = Color.White,
-    surface = Color.White,
-    onPrimary = Color.White,
-    onSecondary = Color.Black,
-    onBackground = Color.Black,
-    onSurface = Color.Black,
-    */
 )
 
 @Composable
@@ -36,6 +32,15 @@ fun ComposeDemoTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Compo
         DarkColorPalette
     } else {
         LightColorPalette
+    }
+
+    val view = LocalView.current
+    if (!view.isInEditMode) {
+        SideEffect {
+            val window = (view.context as Activity).window
+            window.statusBarColor = colors.background.toArgb()
+            WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = !darkTheme
+        }
     }
 
     MaterialTheme(

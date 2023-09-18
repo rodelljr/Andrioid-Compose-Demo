@@ -26,7 +26,7 @@ import com.roger.composedemo.helper.Dessert
 import com.roger.composedemo.helper.deserts
 
 /* A generic list of sample items */
-@Preview
+@Preview(showBackground = true)
 @Composable
 fun MyList() {
     Column(
@@ -43,7 +43,7 @@ fun ListItemUI(dessert: Dessert) {
     val mContext = LocalContext.current;
 
     Card(modifier = Modifier
-        .padding(all = 10.dp)
+        .padding(all = 16.dp)
         .fillMaxWidth()
         .clickable {
             mToast(mContext, dessert.name)
