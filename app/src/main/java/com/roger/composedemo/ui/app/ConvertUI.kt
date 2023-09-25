@@ -16,6 +16,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.ImeAction
@@ -56,15 +57,14 @@ fun LengthCardUI(){
            .fillMaxWidth()
            .height(220.dp)
            .shadow(16.dp),
-        backgroundColor = MaterialTheme.colors.primary
+        backgroundColor = MaterialTheme.colors.surface
    ) {
         Column(
         ) {
             Row( modifier = Modifier
                 .weight(.8f)
                 .height(50.dp)){
-                Text(text = stringResource(id = label1),Modifier.padding(16.dp) ,
-                    color = MaterialTheme.colors.secondary)
+                Text(text = stringResource(id = label1),Modifier.padding(16.dp), color = MaterialTheme.colors.secondary )
             }
 
             Row(
@@ -107,13 +107,13 @@ fun LengthCardUI(){
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .background(MaterialTheme.colors.secondary)
+                    .background(MaterialTheme.colors.primary)
                     .height(75.dp)
                     .weight(.8f),
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.Center
             ){
-                Text(text = result, fontSize = 21.sp)
+                Text(text = result, fontSize = 21.sp, color = MaterialTheme.colors.primaryVariant)
             }
         }
    }
@@ -126,11 +126,9 @@ fun demoEntry1(entryChoice: Boolean, cardNum: Int): String {
     OutlinedTextField(
         value = entry1,
         colors = TextFieldDefaults.outlinedTextFieldColors(
-            focusedBorderColor = MaterialTheme.colors.primaryVariant,
-            unfocusedBorderColor = MaterialTheme.colors.secondary),
+            focusedBorderColor = MaterialTheme.colors.primary),
         onValueChange = { entry1 = it },
         maxLines = 1,
-        textStyle =  TextStyle(color = MaterialTheme.colors.secondary),
         modifier = Modifier
             .padding(16.dp)
             .fillMaxWidth(),
@@ -159,15 +157,14 @@ fun TempCardUI() {
             .fillMaxWidth()
             .height(220.dp)
             .shadow(16.dp),
-        backgroundColor = MaterialTheme.colors.primary
+        backgroundColor = MaterialTheme.colors.surface
     ) {
         Column(
         ) {
             Row( modifier = Modifier
                 .weight(.8f)
                 .height(50.dp)){
-                Text(text = stringResource(id = label2),Modifier.padding(16.dp) ,
-                    color = MaterialTheme.colors.secondary)
+                Text(text = stringResource(id = label2),Modifier.padding(16.dp), color = MaterialTheme.colors.secondary)
             }
 
             Row(
@@ -210,13 +207,13 @@ fun TempCardUI() {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .background(MaterialTheme.colors.secondary)
+                    .background(MaterialTheme.colors.primary)
                     .height(75.dp)
                     .weight(.8f),
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.Center
             ){
-                Text(text = result, fontSize = 21.sp)
+                Text(text = result, fontSize = 21.sp, color = MaterialTheme.colors.primaryVariant)
             }
         }
 

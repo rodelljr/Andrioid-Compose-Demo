@@ -12,18 +12,22 @@ import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 
 private val DarkColorPalette = darkColors(
-    primary = ContentColor,
-    primaryVariant = AccentColor,
-    secondary = PrimaryColor,
-    background = AccentColor
+    primary = PrimaryColor,
+    primaryVariant = PrimaryColor,
+    secondary = MyWhite,
+    secondaryVariant = ContentColor,
+    background = MyBlack,
+    surface = SecondaryColor,
+
 )
 
 private val LightColorPalette = lightColors(
-    primary = ContentColor,
-    primaryVariant = PrimaryColor,
-    secondary = AccentColor,
-    background = SecondaryColor
-
+    primary = PrimaryColor,
+    primaryVariant = MyWhite,
+    secondary = SecondaryColor,
+    secondaryVariant = AltContentColor,
+    background = ContentColor,
+    surface = MyWhite
 )
 
 @Composable
@@ -34,11 +38,12 @@ fun ComposeDemoTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Compo
         LightColorPalette
     }
 
-    val view = LocalView.current
+ val view = LocalView.current
     if (!view.isInEditMode) {
         SideEffect {
             val window = (view.context as Activity).window
-            window.statusBarColor = colors.background.toArgb()
+            window.statusBarColor = colors.primary.toArgb()
+            window.navigationBarColor = colors.primaryVariant.toArgb()
             WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = !darkTheme
         }
     }

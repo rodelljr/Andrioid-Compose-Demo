@@ -25,7 +25,7 @@ fun BottomNavBar(
     val backStack = navController.currentBackStackEntryAsState();
     BottomNavigation(
         modifier = modifier,
-        backgroundColor = MaterialTheme.colors.background,
+        backgroundColor = MaterialTheme.colors.primaryVariant,
     ) {
         items.forEach { item ->
             val selected = item.route == backStack.value?.destination?.route
@@ -33,7 +33,7 @@ fun BottomNavBar(
                 selected = selected,
                 onClick = { onItemClick(item) },
                 selectedContentColor = MaterialTheme.colors.secondary,
-                unselectedContentColor = MaterialTheme.colors.primaryVariant,
+                unselectedContentColor = MaterialTheme.colors.secondaryVariant,
                 icon = {
                     Column(horizontalAlignment = Alignment.CenterHorizontally ) {
                         Icon (

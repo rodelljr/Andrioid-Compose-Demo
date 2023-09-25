@@ -11,6 +11,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Card
 import androidx.compose.material.Icon
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -47,17 +48,18 @@ fun ListItemUI(dessert: Dessert) {
         .fillMaxWidth()
         .clickable {
             mToast(mContext, dessert.name)
-        }
+        },
+        backgroundColor = MaterialTheme.colors.surface
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier.padding(10.dp)
         ) {
-            Icon(dessert.icon, contentDescription = dessert.name, modifier = Modifier.size(32.dp))
+            Icon(dessert.icon, contentDescription = dessert.name, modifier = Modifier.size(32.dp), tint = MaterialTheme.colors.secondary)
             Spacer(Modifier.width(10.dp))
             Column(modifier = Modifier.padding(all = 6.dp)) {
-                Text(dessert.name, fontSize = 25.sp, fontWeight = FontWeight.W700, modifier = Modifier.padding(10.dp))
-                Text(dessert.desertType, color = Color.Gray, modifier = Modifier.padding(10.dp))
+                Text(dessert.name, color = MaterialTheme.colors.secondary,fontSize = 25.sp, fontWeight = FontWeight.W700, modifier = Modifier.padding(5.dp))
+                Text(dessert.desertType, color = Color.Gray, modifier = Modifier.padding(5.dp))
             }
         }
 

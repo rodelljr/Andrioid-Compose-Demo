@@ -9,8 +9,11 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.AddCircle
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.List
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
@@ -68,11 +71,11 @@ fun Bars() {
                 title = {
                     Text(
                         text = "Compose Demo",
-                        color = MaterialTheme.colors.secondary
+                        color = Color.White
                     )
                 },
-                backgroundColor = MaterialTheme.colors.background,
-                contentColor = MaterialTheme.colors.background,
+                backgroundColor = MaterialTheme.colors.primary,
+                contentColor = MaterialTheme.colors.secondaryVariant,
                 elevation = 0.dp
             )
         },
@@ -87,12 +90,12 @@ fun Bars() {
                     BottomNavItem(
                         name = "Convert",
                         route = "Convert",
-                        icon = Icons.Default.AddCircle
+                        icon = Icons.Default.Home
                     ),
                     BottomNavItem(
                         name = "My List",
                         route = "MyList",
-                        icon = Icons.Default.Add
+                        icon = Icons.Default.List
                     )
                 ),
                 navController = navController,
@@ -103,30 +106,3 @@ fun Bars() {
     )
 }
 
-@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
-@Composable
-fun BottomNavLaunch() {
-    val navController = rememberNavController()
-    Scaffold(
-        bottomBar = {
-            BottomNavBar(
-                items = listOf(
-                    BottomNavItem(
-                        name = "Convert",
-                        route = "Convert",
-                        icon = Icons.Default.AddCircle
-                    ),
-                    BottomNavItem(
-                        name = "My List",
-                        route = "MyList",
-                        icon = Icons.Default.Add
-                    )
-                ),
-                navController = navController,
-                onItemClick = {
-                    navController.navigate(it.route)
-                })
-        }
-    ) {
-    }
-}
